@@ -76,15 +76,18 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Container(
-          height: 900.0,
-          width: 600.0,
-          color: Colors.blue[50],
-          child: const Align(
-              alignment: Alignment.center,
-              child: Image(
-                  image: NetworkImage(
-                      'https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z'))),
+        child: InteractiveViewer(
+          maxScale: 100.0,
+          child: Container(
+            height: 900.0,
+            width: 600.0,
+            color: Colors.blue[50],
+            child: const Align(
+                alignment: Alignment.center,
+                child: Image(
+                    image: NetworkImage(
+                        'https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z'))),
+          ),
         ),
       ),
     );
