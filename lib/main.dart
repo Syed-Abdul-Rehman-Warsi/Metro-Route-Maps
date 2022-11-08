@@ -1,3 +1,4 @@
+import 'package:dubai_metro_app/splash.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Dubai Metro Route Map'),
+      home: const Splash(),
     );
   }
 }
@@ -48,19 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -82,11 +70,26 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 900.0,
             width: 600.0,
             color: Colors.blue[50],
-            child: const Align(
+            child: Align(
                 alignment: Alignment.center,
                 child: Image(
-                    image: NetworkImage(
-                        'https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z'))),
+                  image: const NetworkImage(
+                      'https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z'),
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    }
+                  },
+                )),
           ),
         ),
       ),
