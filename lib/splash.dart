@@ -22,21 +22,24 @@ class _SplashState extends State<Splash> {
         context,
         MaterialPageRoute(
             builder: ((context) => const MyHomePage(
-                  title: 'Dubai',
+                  title: 'Dubai Metro',
                 ))));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xE5E5E5),
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/background.jpg'), fit: BoxFit.cover)),
+      padding: const EdgeInsets.all(10),
       child: Container(
-        color: Color(0xE5E5E5),
+        color: const Color(0xE5E5E5),
         height: 200,
         width: 400,
         child: const Align(
           alignment: Alignment.center,
-          child: Image(image: AssetImage('images/logo.jpg')),
+          child: Image(image: AssetImage('images/logo.png')),
         ),
       ),
     );
