@@ -22,26 +22,20 @@ class _SplashState extends State<Splash> {
         context,
         MaterialPageRoute(
             builder: ((context) => const MyHomePage(
-                  title: 'Dubai Metro',
+                  title: 'Dubai Metro Route Planner Map',
                 ))));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/background.jpg'), fit: BoxFit.cover)),
-      padding: const EdgeInsets.all(10),
-      child: Container(
-        color: const Color(0xE5E5E5),
-        height: 200,
-        width: 400,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/background.jpg'), fit: BoxFit.cover)),
+        padding: const EdgeInsets.all(10),
+        // ignore: prefer_const_constructors
         child: const Align(
-          alignment: Alignment.center,
-          child: Image(image: AssetImage('images/logo.png')),
-        ),
-      ),
-    );
+            alignment: Alignment.center,
+            child: Text("DUBAI METRO", style: TextStyle(color: Colors.white))));
   }
 }

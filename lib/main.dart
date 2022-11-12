@@ -1,5 +1,6 @@
 import 'package:dubai_metro_app/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Dubai Metro',
-      color: const Color(0xE5E5E5),
+      color: const Color(0xFF50A4D7),
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         // color code E5E5E5
-        primaryColor: const Color(0xE5E5E5),
+        primaryColor: const Color(0xFF50A4D7),
       ),
       home: const Splash(),
     );
@@ -64,36 +65,26 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        centerTitle: true,
         title: Text(widget.title),
-        backgroundColor: Color(0xE5E5E5),
+        backgroundColor: Color(0xFF50A4D7),
       ),
       body: Center(
         child: InteractiveViewer(
-          maxScale: 100.0,
+          maxScale: 150.0,
           child: Container(
-            height: 900.0,
-            width: 600.0,
             color: Colors.blue[50],
             child: Align(
+              alignment: Alignment.center,
+              child: CachedNetworkImage(
+                imageUrl:
+                    "https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z",
+                fit: BoxFit.cover,
                 alignment: Alignment.center,
-                child: Image(
-                  image: const NetworkImage(
-                      'https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z'),
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    }
-                  },
-                )),
+                placeholder: (context, url) => CircularProgressIndicator(),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
           ),
         ),
       ),
