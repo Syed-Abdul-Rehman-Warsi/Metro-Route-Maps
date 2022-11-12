@@ -69,6 +69,7 @@ flutter:
   - images/logo.png
   - images/logo.svg
   - images/background.jpg
+  - images/dubaimetro.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

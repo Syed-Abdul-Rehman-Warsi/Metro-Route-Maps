@@ -36,6 +36,7 @@ class _SplashState extends State<Splash> {
         // ignore: prefer_const_constructors
         child: const Align(
             alignment: Alignment.center,
-            child: Text("DUBAI METRO", style: TextStyle(color: Colors.white))));
+            child: Image(image: AssetImage('images/dubaimetro.png')
+            )));
   }
 }
