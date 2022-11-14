@@ -69,23 +69,41 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         backgroundColor: Color(0xFF50A4D7),
       ),
-      body: Center(
-        child: InteractiveViewer(
-          maxScale: 150.0,
-          child: Container(
-            color: Colors.blue[50],
-            child: Align(
-              alignment: Alignment.center,
-              child: CachedNetworkImage(
-                imageUrl:
-                    "https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z",
-                fit: BoxFit.cover,
-                alignment: Alignment.center,
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                color: Colors.blue[50],
+                child: Align(
+                  alignment: Alignment.center,
+                  child: InteractiveViewer(
+                    maxScale: 150,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          "https://pumsuoysnovuyqwdfxvm.supabase.co/storage/v1/object/public/maps/Images/dubai_metro_map.jpg?t=2022-11-06T14%3A19%3A20.112Z",
+                      // fit: BoxFit.cover,
+                      alignment: Alignment.center,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+            Center(
+              child: Container(
+                color: Colors.blue[50],
+                width: 100000,
+                height: 500,
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text("Add", style: TextStyle(fontSize: 520)),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

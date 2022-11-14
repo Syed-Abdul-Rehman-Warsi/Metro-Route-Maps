@@ -1,4 +1,4 @@
-package com.example.dubai_metro_app
+package dubai.metro.offlinemap
 
 import io.flutter.embedding.android.FlutterActivity
 
